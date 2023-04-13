@@ -183,52 +183,13 @@ There are many LendingClub data sets on Kaggle. Here is the information on this 
 
 #### Note: We also provide feature information on the data as a .csv file for easy lookup throughout the notebook:
 
-```python
-import pandas as pd
-```
-
-```python
-data_info = pd.read_csv('../DATA/lending_club_info.csv',index_col='LoanStatNew')
-```
-
-```python
-print(data_info.loc['revol_util']['Description'])
-```
-
     Revolving line utilization rate, or the amount of credit the borrower is using relative to all available revolving credit.
     
-
-```python
-def feat_info(col_name):
-    print(data_info.loc[col_name]['Description'])
-```
-
-```python
-feat_info('mort_acc')
-```
 
     Number of mortgage accounts.
     
 
 ## Loading the data and other imports
-
-```python
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# might be needed depending on your version of Jupyter
-%matplotlib inline
-```
-
-```python
-df = pd.read_csv('../DATA/lending_club_loan_two.csv')
-```
-
-```python
-df.info()
-```
 
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 396030 entries, 0 to 396029
@@ -282,11 +243,6 @@ df.info()
 
 **TASK: Since we will be attempting to predict loan_status, create a countplot as shown below.**
 
-```python
-# CODE HERE
-sns.countplot(df['loan_status'])
-```
-
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
     
@@ -304,17 +260,7 @@ sns.countplot(df['loan_status'])
     
 
 
-```python
-
-```
-
 **TASK: Create a histogram of the loan_amnt column.**
-
-```python
-# CODE HERE
-plt.figure(figsize=(12,8))
-sns.histplot(df['loan_amnt'])
-```
 
 
 
@@ -329,16 +275,7 @@ sns.histplot(df['loan_amnt'])
     
 
 
-```python
-
-```
-
 **TASK: Let's explore correlation between the continuous feature variables. Calculate the correlation between all continuous numeric variables using .corr() method.**
-
-```python
-# CODE HERE
-df.corr()
-```
 
 
 
@@ -562,20 +499,10 @@ df.corr()
 
 
 
-```python
-
-```
-
 **TASK: Visualize this using a heatmap. Depending on your version of matplotlib, you may need to manually adjust the heatmap.**
 
 * [Heatmap info](https://seaborn.pydata.org/generated/seaborn.heatmap.html#seaborn.heatmap)
 * [Help with resizing](https://stackoverflow.com/questions/56942670/matplotlib-seaborn-first-and-last-row-cut-in-half-of-heatmap-plot)
-
-```python
-# CODE HERE
-plt.figure(figsize=(12,8))
-sns.heatmap(df.corr(),annot=True )
-```
 
 
 
@@ -590,16 +517,7 @@ sns.heatmap(df.corr(),annot=True )
     
 
 
-```python
-
-```
-
 **TASK: You should have noticed almost perfect correlation with the "installment" feature. Explore this feature further. Print out their descriptions and perform a scatterplot between them. Does this relationship make sense to you? Do you think there is duplicate information here?**
-
-```python
-# CODE HERE
-sns.scatterplot(x='installment',y='loan_amnt',data=df)
-```
 
 
 
@@ -614,30 +532,13 @@ sns.scatterplot(x='installment',y='loan_amnt',data=df)
     
 
 
-```python
-print(data_info.loc['installment']['Description'])
-```
-
     The monthly payment owed by the borrower if the loan originates.
     
-
-```python
-print(data_info.loc['loan_amnt']['Description'])
-```
 
     The listed amount of the loan applied for by the borrower. If at some point in time, the credit department reduces the loan amount, then it will be reflected in this value.
     
 
-```python
-
-```
-
 **TASK: Create a boxplot showing the relationship between the loan_status and the Loan Amount.**
-
-```python
-# CODE HERE
-sns.boxplot(x='loan_status',y='loan_amnt',data=df)
-```
 
 
 
@@ -652,16 +553,7 @@ sns.boxplot(x='loan_status',y='loan_amnt',data=df)
     
 
 
-```python
-
-```
-
 **TASK: Calculate the summary statistics for the loan amount, grouped by the loan_status.**
-
-```python
-# CODE HERE
-df.groupby('loan_status')['loan_amnt'].describe()
-```
 
 
 
@@ -734,17 +626,7 @@ df.groupby('loan_status')['loan_amnt'].describe()
 
 
 
-```python
-
-```
-
 **TASK: Let's explore the Grade and SubGrade columns that LendingClub attributes to the loans. What are the unique possible grades and subgrades?**
-
-```python
-# CODE HERE
-df['grade'].unique()
-
-```
 
 
 
@@ -752,10 +634,6 @@ df['grade'].unique()
     array(['B', 'A', 'C', 'E', 'D', 'F', 'G'], dtype=object)
 
 
-
-```python
-df['sub_grade'].unique()
-```
 
 
 
@@ -767,16 +645,7 @@ df['sub_grade'].unique()
 
 
 
-```python
-
-```
-
 **TASK: Create a countplot per grade. Set the hue to the loan_status label.**
-
-```python
-# CODE HERE
-sns.countplot('grade',data=df, hue='loan_status')
-```
 
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
@@ -795,18 +664,7 @@ sns.countplot('grade',data=df, hue='loan_status')
     
 
 
-```python
-
-```
-
 **TASK: Display a count plot per subgrade. You may need to resize for this plot and [reorder](https://seaborn.pydata.org/generated/seaborn.countplot.html#seaborn.countplot) the x axis. Feel free to edit the color palette. Explore both all loans made per subgrade as well being separated based on the loan_status. After creating this plot, go ahead and create a similar plot, but set hue="loan_status"**
-
-```python
-#CODE HERE
-sorteddf=sorted(df['sub_grade'].unique())
-plt.figure(figsize=(12,4))
-sns.countplot('sub_grade',data=df, order= sorteddf)
-```
 
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
@@ -825,16 +683,6 @@ sns.countplot('sub_grade',data=df, order= sorteddf)
     
 
 
-```python
-
-```
-
-```python
-# CODE HERE
-plt.figure(figsize=(12,8))
-sns.countplot('sub_grade',data=df, order= sorteddf,hue='loan_status')
-```
-
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
     
@@ -852,19 +700,7 @@ sns.countplot('sub_grade',data=df, order= sorteddf,hue='loan_status')
     
 
 
-```python
-
-```
-
 **TASK: It looks like F and G subgrades don't get paid back that often. Isloate those and recreate the countplot just for those subgrades.**
-
-```python
-# CODE HERE
-#plt.figure(figsize=(12,8))
-isolate_df=df[(df['grade']=='F') | (df['grade']=='G')]
-sub_order=sorted(isolate_df['sub_grade'].unique())
-sns.countplot('sub_grade',data=isolate_df,order=sub_order,hue='loan_status')
-```
 
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
@@ -883,22 +719,7 @@ sns.countplot('sub_grade',data=isolate_df,order=sub_order,hue='loan_status')
     
 
 
-```python
-
-```
-
 **TASK: Create a new column called 'loan_repaid' which will contain a 1 if the loan status was "Fully Paid" and a 0 if it was "Charged Off".**
-
-```python
-# CODE HERE
-df['loan_repaid']=df['loan_status'].apply(lambda x : 1 if x=='Fully Paid'
-                        else 0  )
-
-```
-
-```python
-df['loan_repaid'].head()
-```
 
 
 
@@ -912,20 +733,7 @@ df['loan_repaid'].head()
 
 
 
-```python
-
-```
-
-```python
-
-```
-
 **CHALLENGE TASK: (Note this is hard, but can be done in one line!) Create a bar plot showing the correlation of the numeric features to the new loan_repaid column. [Helpful Link](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.bar.html)**
-
-```python
-#CODE HERE
-df.corr()['loan_repaid'].drop('loan_repaid').sort_values().plot(kind='bar')
-```
 
 
 
@@ -940,10 +748,6 @@ df.corr()['loan_repaid'].drop('loan_repaid').sort_values().plot(kind='bar')
     
 
 
-```python
-
-```
-
 ---
 ---
 # Section 2: Data PreProcessing
@@ -951,10 +755,6 @@ df.corr()['loan_repaid'].drop('loan_repaid').sort_values().plot(kind='bar')
 **Section Goals: Remove or fill any missing data. Remove unnecessary or repetitive features. Convert categorical string features to dummy variables.**
 
 
-
-```python
-df.head()
-```
 
 
 
@@ -1134,11 +934,6 @@ df.head()
 
 **TASK: What is the length of the dataframe?**
 
-```python
-# CODE HERE
-len(df)
-```
-
 
 
 
@@ -1146,16 +941,7 @@ len(df)
 
 
 
-```python
-
-```
-
 **TASK: Create a Series that displays the total count of missing values per column.**
-
-```python
-# CODE HERE
-df.isna().sum()
-```
 
 
 
@@ -1192,16 +978,7 @@ df.isna().sum()
 
 
 
-```python
-
-```
-
 **TASK: Convert this Series to be in term of percentage of the total DataFrame**
-
-```python
-# CODE HERE
-100*df.isna().sum()/df.isna().count()
-```
 
 
 
@@ -1238,35 +1015,15 @@ df.isna().sum()
 
 
 
-```python
-
-```
-
 **TASK: Let's examine emp_title and emp_length to see whether it will be okay to drop them. Print out their feature information using the feat_info() function from the top of this notebook.**
-
-```python
-# CODE HERE
-feat_info('emp_length')
-
-```
 
     Employment length in years. Possible values are between 0 and 10 where 0 means less than one year and 10 means ten or more years. 
     
-
-```python
-feat_info('emp_title')
-
-```
 
     The job title supplied by the Borrower when applying for the loan.*
     
 
 **TASK: How many unique employment job titles are there?**
-
-```python
-# CODE HERE
-df['emp_title'].nunique()
-```
 
 
 
@@ -1275,31 +1032,9 @@ df['emp_title'].nunique()
 
 
 
-```python
-
-```
-
-```python
-
-```
-
 **TASK: Realistically there are too many unique job titles to try to convert this to a dummy variable feature. Let's remove that emp_title column.**
 
-```python
-# CODE HERE
-df=df.drop('emp_title',axis=1)
-```
-
-```python
-
-```
-
 **TASK: Create a count plot of the emp_length feature column. Challenge: Sort the order of the values.**
-
-```python
-# CODE HERE
-sorted(df['emp_length'].dropna().unique())
-```
 
 
 
@@ -1318,23 +1053,6 @@ sorted(df['emp_length'].dropna().unique())
 
 
 
-```python
-emp=['< 1 year',      
-     '1 year',
- '2 years',
- '3 years',
- '4 years',
- '5 years',
- '6 years',
- '7 years',
- '8 years',
- '9 years',
- '10+ years']
-plt.figure(figsize=(12,4))
-
-sns.countplot('emp_length',data=df, order=emp)
-```
-
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
     
@@ -1352,22 +1070,7 @@ sns.countplot('emp_length',data=df, order=emp)
     
 
 
-```python
-
-```
-
-```python
-
-```
-
 **TASK: Plot out the countplot with a hue separating Fully Paid vs Charged Off**
-
-```python
-# CODE HERE
-plt.figure(figsize=(12,4))
-
-sns.countplot('emp_length',data=df, order=emp, hue="loan_status")
-```
 
     C:\Users\Gholi002\Anaconda3\lib\site-packages\seaborn\_decorators.py:36: FutureWarning: Pass the following variable as a keyword arg: x. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
       warnings.warn(
@@ -1386,23 +1089,7 @@ sns.countplot('emp_length',data=df, order=emp, hue="loan_status")
     
 
 
-```python
-
-```
-
 **CHALLENGE TASK: This still doesn't really inform us if there is a strong relationship between employment length and being charged off, what we want is the percentage of charge offs per category. Essentially informing us what percent of people per employment category didn't pay back their loan. There are a multitude of ways to create this Series. Once you've created it, see if visualize it with a [bar plot](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.DataFrame.plot.html). This may be tricky, refer to solutions if you get stuck on creating this Series.**
-
-```python
-# CODE HERE
-df_1=df[df['loan_status']=="Charged Off"].groupby('emp_length').count()
-
-```
-
-```python
-df_2=df[df['loan_status']=="Fully Paid"].groupby('emp_length').count()
-df_total=df_1/df_2
-df_total
-```
 
 
 
@@ -1744,10 +1431,6 @@ df_total
 
 
 
-```python
-df_total['loan_status'].plot( kind = 'bar')
-```
-
 
 
 
@@ -1761,28 +1444,7 @@ df_total['loan_status'].plot( kind = 'bar')
     
 
 
-```python
-
-```
-
-```python
-
-```
-
-```python
-
-```
-
 **TASK: Charge off rates are extremely similar across all employment lengths. Go ahead and drop the emp_length column.**
-
-```python
-# CODE HERE
-df=df.drop('emp_length',axis=1)
-```
-
-```python
-df
-```
 
 
 
@@ -2102,10 +1764,6 @@ df
 
 **TASK: Revisit the DataFrame to see what feature columns still have missing data.**
 
-```python
-df.isna().sum()
-```
-
 
 
 
@@ -2139,16 +1797,7 @@ df.isna().sum()
 
 
 
-```python
-
-```
-
 **TASK: Review the title column vs the purpose column. Is this repeated information?**
-
-```python
-# CODE HERE
-df['title'].str.lower().equals(df['purpose'].str.lower())
-```
 
 
 
@@ -2156,10 +1805,6 @@ df['title'].str.lower().equals(df['purpose'].str.lower())
     False
 
 
-
-```python
-df['purpose'].head(10)
-```
 
 
 
@@ -2177,10 +1822,6 @@ df['purpose'].head(10)
     Name: purpose, dtype: object
 
 
-
-```python
-df['title'].head(10)
-```
 
 
 
@@ -2201,15 +1842,6 @@ df['title'].head(10)
 
 **TASK: The title column is simply a string subcategory/description of the purpose column. Go ahead and drop the title column.**
 
-```python
-# CODE HERE
-df=df.drop('title',axis=1)
-```
-
-```python
-
-```
-
 ---
 **NOTE: This is one of the hardest parts of the project! Refer to the solutions video if you need guidance, feel free to fill or drop the missing values of the mort_acc however you see fit! Here we're going with a very specific approach.**
 
@@ -2217,28 +1849,10 @@ df=df.drop('title',axis=1)
 ---
 **TASK: Find out what the mort_acc feature represents**
 
-```python
-# CODE HERE
-feat_info('mort_acc')
-```
-
     Number of mortgage accounts.
     
 
-```python
-
-```
-
 **TASK: Create a value_counts of the mort_acc column.**
-
-```python
-
-```
-
-```python
-# CODE HERE
-df['mort_acc'].value_counts()
-```
 
 
 
@@ -2280,15 +1894,7 @@ df['mort_acc'].value_counts()
 
 
 
-```python
-
-```
-
 **TASK: There are many ways we could deal with this missing data. We could attempt to build a simple model to fill it in, such as a linear model, we could just fill it in based on the mean of the other columns, or you could even bin the columns into categories and then set NaN as its own category. There is no 100% correct approach! Let's review the other columsn to see which most highly correlates to mort_acc**
-
-```python
-df.corr()['mort_acc'].sort_values()
-```
 
 
 
@@ -2310,42 +1916,11 @@ df.corr()['mort_acc'].sort_values()
 
 
 
-```python
-
-```
-
 **TASK: Looks like the total_acc feature correlates with the mort_acc , this makes sense! Let's try this fillna() approach. We will group the dataframe by the total_acc and calculate the mean value for the mort_acc per total_acc entry. To get the result below:**
-
-```python
-dd=df.groupby('total_acc').mean()['mort_acc']
-```
-
-```python
-
-```
 
 **CHALLENGE TASK: Let's fill in the missing mort_acc values based on their total_acc value. If the mort_acc is missing, then we will fill in that missing value with the mean value corresponding to its total_acc value from the Series we created above. This involves using an .apply() method with two columns. Check out the link below for more info, or review the solutions video/notebook.**
 
 [Helpful Link](https://stackoverflow.com/questions/13331698/how-to-apply-a-function-to-two-columns-of-pandas-dataframe) 
-
-```python
-# CODE HERE
-def fillin(total_acc, mort_acc):
-    if  np.isnan(mort_acc) : 
-        return dd[total_acc]
-    else:
-        return mort_acc
-
-```
-
-```python
-df['mort_acc'] = df.apply(lambda x: fillin(x.total_acc, x.mort_acc), axis=1)
-
-```
-
-```python
-df['mort_acc']
-```
 
 
 
@@ -2365,10 +1940,6 @@ df['mort_acc']
 
 
 
-```python
-df['mort_acc'].isna().sum()
-```
-
 
 
 
@@ -2376,28 +1947,7 @@ df['mort_acc'].isna().sum()
 
 
 
-```python
-
-```
-
-```python
-
-```
-
 **TASK: revol_util and the pub_rec_bankruptcies have missing data points, but they account for less than 0.5% of the total data. Go ahead and remove the rows that are missing those values in those columns with dropna().**
-
-```python
-# CODE HERE
-```
-
-```python
-df=df.dropna(subset=['revol_util', 'pub_rec_bankruptcies'])
-```
-
-```python
-df.isnull().sum()
-df.dropna()
-```
 
 
 
@@ -2723,12 +2273,6 @@ df.dropna()
 
 [Another very useful method call](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.select_dtypes.html)
 
-```python
-# CODE HERE
-df.select_dtypes(include=['object'])
-
-```
-
 
 
 
@@ -2937,11 +2481,6 @@ df.select_dtypes(include=['object'])
 
 
 
-```python
-df_processed=df.copy()
-
-```
-
 ---
 **Let's now go through all the string features to see what we should do with them.**
 
@@ -2952,11 +2491,6 @@ df_processed=df.copy()
 
 **TASK: Convert the term feature into either a 36 or 60 integer numeric data type using .apply() or .map().**
 
-```python
-# CODE HERE
-df['term'].value_counts()
-```
-
 
 
 
@@ -2965,14 +2499,6 @@ df['term'].value_counts()
     Name: term, dtype: int64
 
 
-
-```python
-df['term']=df['term'].apply(lambda x : np.int32(x[:3]))
-```
-
-```python
-df['term']
-```
 
 
 
@@ -2996,33 +2522,7 @@ df['term']
 
 **TASK: We already know grade is part of sub_grade, so just drop the grade feature.**
 
-```python
-# CODE HERE
-df=df.drop('grade',axis=1)
-```
-
-```python
-
-```
-
 **TASK: Convert the subgrade into dummy variables. Then concatenate these new columns to the original dataframe. Remember to drop the original subgrade column and to add drop_first=True to your get_dummies call.**
-
-```python
-# CODE HERE
-dummies=pd.get_dummies(df['sub_grade'],drop_first=True)
-```
-
-```python
-df=df.drop('sub_grade',axis=1)
-```
-
-```python
-df=pd.concat([df,dummies],axis=1)
-```
-
-```python
-df.columns
-```
 
 
 
@@ -3040,27 +2540,8 @@ df.columns
 
 
 
-```python
-
-```
-
 ### verification_status, application_type,initial_list_status,purpose 
 **TASK: Convert these columns: ['verification_status', 'application_type','initial_list_status','purpose'] into dummy variables and concatenate them with the original dataframe. Remember to set drop_first=True and to drop the original columns.**
-
-```python
-# CODE HERE
-dumm=pd.get_dummies(df[['verification_status', 'application_type','initial_list_status','purpose']],drop_first=True)
-df=pd.concat([df,dumm],axis=1)
-df=df.drop(['verification_status', 'application_type','initial_list_status','purpose'],axis=1)
-```
-
-```python
-df_processed=df.copy()
-```
-
-```python
-df_processed.head()
-```
 
 
 
@@ -3237,11 +2718,6 @@ df_processed.head()
 ### home_ownership
 **TASK:Review the value_counts for the home_ownership column.**
 
-```python
-#CODE HERE
-df['home_ownership'].value_counts()
-```
-
 
 
 
@@ -3255,17 +2731,7 @@ df['home_ownership'].value_counts()
 
 
 
-```python
-
-```
-
 **TASK: Convert these to dummy variables, but [replace](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.replace.html) NONE and ANY with OTHER, so that we end up with just 4 categories, MORTGAGE, RENT, OWN, OTHER. Then concatenate them with the original dataframe. Remember to set drop_first=True and to drop the original columns.**
-
-```python
-#CODE HERE
-df['home_ownership']=df['home_ownership'].replace(['NONE', 'ANY'], 'OTHER')
-df['home_ownership'].value_counts()
-```
 
 
 
@@ -3278,32 +2744,10 @@ df['home_ownership'].value_counts()
 
 
 
-```python
-df=pd.concat([df.drop('home_ownership',axis=1),
-              
-              pd.get_dummies(df['home_ownership'],drop_first=True)],axis=1)
-```
-
 ### address
 **TASK: Let's feature engineer a zip code column from the address in the data set. Create a column called 'zip_code' that extracts the zip code from the address column.**
 
-```python
-#CODE HERE
-df_processed=df.copy()
-df['zip_code'] = df['address'].apply(lambda address:address[-5:])
-```
-
 **TASK: Now make this zip_code column into dummy variables using pandas. Concatenate the result and drop the original zip_code column along with dropping the address column.**
-
-```python
-dummies = pd.get_dummies(df['zip_code'],drop_first=True)
-df = df.drop(['zip_code','address'],axis=1)
-df = pd.concat([df,dummies],axis=1)
-```
-
-```python
-df
-```
 
 
 
@@ -3625,39 +3069,12 @@ df
 
 **TASK: This would be data leakage, we wouldn't know beforehand whether or not a loan would be issued when using our model, so in theory we wouldn't have an issue_date, drop this feature.**
 
-```python
-#CODE HERE
-df=df.drop('issue_d',axis=1)
-```
-
-```python
-
-```
-
 ### earliest_cr_line
 **TASK: This appears to be a historical time stamp feature. Extract the year from this feature using a .apply function, then convert it to a numeric feature. Set this new data to a feature column called 'earliest_cr_year'.Then drop the earliest_cr_line feature.**
-
-```python
-#CODE HERE
-dd=df_processed['earliest_cr_line'].apply(lambda x: x[-4:])
-```
-
-```python
-df=df.drop('earliest_cr_line',axis=1)
-
-```
-
-```python
-
-```
 
 ## Train Test Split
 
 **TASK: Import train_test_split from sklearn.**
-
-```python
-df.select_dtypes('object')
-```
 
 
 
@@ -3737,15 +3154,6 @@ df.select_dtypes('object')
 
 **TASK: drop the load_status column we created earlier, since its a duplicate of the loan_repaid column. We'll use the loan_repaid column since its already in 0s and 1s.**
 
-```python
-# CODE HERE
-df = df.drop('loan_status',axis=1)
-```
-
-```python
-
-```
-
 
 
 
@@ -3766,16 +3174,6 @@ df = df.drop('loan_status',axis=1)
 
 **TASK: Set X and y variables to the .values of the features and label.**
 
-```python
-#CODE HERE
-X = df.drop('loan_repaid',axis=1).values
-y = df['loan_repaid'].values
-```
-
-```python
-X.shape
-```
-
 
 
 
@@ -3795,26 +3193,10 @@ X.shape
 ----
 ----
 
-```python
-df=df_save
-#df = df.sample(frac=0.1,random_state=101)
-print(len(df))
-```
-
     39522
     
 
 **TASK: Perform a train/test split with test_size=0.2 and a random_state of 101.**
-
-```python
-#CODE HERE
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=101)
-```
-
-```python
-X_train.shape
-```
 
 
 
@@ -3827,75 +3209,13 @@ X_train.shape
 
 **TASK: Use a MinMaxScaler to normalize the feature data X_train and X_test. Recall we don't want data leakge from the test set so we only fit on the X_train data.**
 
-```python
-# CODE HERE
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-X_train=scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-```
-
-```python
-
-```
-
-```python
-
-```
-
-```python
-
-```
-
-```python
-
-```
-
 # Creating the Model
 
 **TASK: Run the cell below to import the necessary Keras functions.**
 
-```python
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense,Dropout
-```
-
 **TASK: Build a sequential model to will be trained on the data. You have unlimited options here, but here is what the solution uses: a model that goes 78 --> 39 --> 19--> 1 output neuron. OPTIONAL: Explore adding [Dropout layers](https://keras.io/layers/core/) [1](https://en.wikipedia.org/wiki/Dropout_(neural_networks)) [2](https://towardsdatascience.com/machine-learning-part-20-dropout-keras-layers-explained-8c9f6dc4c9ab)**
 
-```python
-# CODE HERE
-model = Sequential()
-model.add(Dense(78,activation='relu'))
-model.add(Dropout(0.2))
-model.add(Dense(39,activation='relu'))
-model.add(Dropout(0.2))
-model.add(Dense(19,activation='relu'))
-model.add(Dense(1,activation='sigmoid'))
-
-# Choose whatever number of layers/neurons you want.
-
-# https://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
-
-# Remember to compile()
-model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-```
-
-```python
-
-```
-
 **TASK: Fit the model to the training data for at least 25 epochs. Also add in the validation data for later plotting. Optional: add in a batch_size of 256.**
-
-```python
-# CODE HERE
-model.fit(X_train, 
-          y_train, 
-          epochs=25,
-          batch_size=256,
-          validation_data=(X_test, y_test), 
-          )
-```
 
     Epoch 1/25
     1236/1236 [==============================] - 4s 2ms/step - loss: 0.2948 - accuracy: 0.8798 - val_loss: 0.2656 - val_accuracy: 0.8869
@@ -3956,37 +3276,11 @@ model.fit(X_train,
 
 
 
-```python
-
-```
-
 **TASK: OPTIONAL: Save your model.**
-
-```python
-# CODE HERE
-model.save('loan_model.h5')  
-```
-
-```python
-
-```
-
-```python
-
-```
 
 # Section 3: Evaluating Model Performance.
 
 **TASK: Plot out the validation loss versus the training loss.**
-
-```python
-# CODE HERE
-loss=pd.DataFrame(model.history.history)
-```
-
-```python
-loss[['loss','val_loss']].plot()
-```
 
 
 
@@ -4001,18 +3295,7 @@ loss[['loss','val_loss']].plot()
     
 
 
-```python
-
-```
-
 **TASK: Create predictions from the X_test set and display a classification report and confusion matrix for the X_test set.**
-
-```python
-# CODE HERE
-from sklearn.metrics import classification_report,confusion_matrix
-pred=model.predict(X_test)
-pred
-```
 
     2471/2471 [==============================] - 2s 882us/step
     
@@ -4030,10 +3313,6 @@ pred
 
 
 
-```python
-confusion_matrix(y_test,np.int64(pred)) 
-```
-
 
 
 
@@ -4041,10 +3320,6 @@ confusion_matrix(y_test,np.int64(pred))
            [38266, 25120]], dtype=int64)
 
 
-
-```python
-print(classification_report(y_test,np.int64(pred)))
-```
 
                   precision    recall  f1-score   support
     
@@ -4057,24 +3332,7 @@ print(classification_report(y_test,np.int64(pred)))
     
     
 
-```python
-
-```
-
-```python
-
-```
-
 **TASK: Given the customer below, would you offer this person a loan?**
-
-```python
-import random
-random.seed(101)
-random_ind = random.randint(0,len(df))
-
-new_customer = df.drop('loan_repaid',axis=1).iloc[random_ind]
-new_customer
-```
 
 
 
@@ -4094,13 +3352,6 @@ new_customer
 
 
 
-```python
-# CODE HERE
-model.predict(new_customer.values.reshape(1,77))
-
-
-```
-
     1/1 [==============================] - 0s 17ms/step
     
 
@@ -4111,16 +3362,7 @@ model.predict(new_customer.values.reshape(1,77))
 
 
 
-```python
-
-```
-
 **TASK: Now check, did this person actually end up paying back their loan?**
-
-```python
-# CODE HERE
-df.iloc[random_ind]['loan_repaid']
-```
 
 
 
@@ -4128,9 +3370,5 @@ df.iloc[random_ind]['loan_repaid']
     1.0
 
 
-
-```python
-
-```
 
 # GREAT JOB!
