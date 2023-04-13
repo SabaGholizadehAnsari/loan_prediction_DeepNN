@@ -1,8 +1,10 @@
-<a href="https://www.pieriandata.com"><img src="../Pierian_Data_Logo.PNG"></a>
+# Keras API Project Exercise 
+
+I wrote this project based on tasks assinged in Deeplearning course (copyright of questions bekongs to: <a href="https://www.pieriandata.com"><img src="../Pierian_Data_Logo.PNG"></a>
 <strong><center>Copyright by Pierian Data Inc.</center></strong> 
 <strong><center>Created by Jose Marcial Portilla.</center></strong>
 
-# Keras API Project Exercise
+
 
 ## The Data
 
