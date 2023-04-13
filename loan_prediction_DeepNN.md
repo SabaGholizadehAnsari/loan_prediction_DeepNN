@@ -309,7 +309,7 @@ sns.countplot(df['loan_status'])
 
 
     
-![png](output_15_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_15_2.png)
     
 
 
@@ -336,7 +336,7 @@ sns.histplot(df['loan_amnt'])
 
 
     
-![png](output_18_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_18_1.png)
     
 
 
@@ -601,7 +601,7 @@ sns.heatmap(df.corr(),annot=True )
 
 
     
-![png](output_24_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_24_1.png)
     
 
 
@@ -627,7 +627,7 @@ sns.scatterplot(x='installment',y='loan_amnt',data=df)
 
 
     
-![png](output_27_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_27_1.png)
     
 
 
@@ -669,7 +669,7 @@ sns.boxplot(x='loan_status',y='loan_amnt',data=df)
 
 
     
-![png](output_32_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_32_1.png)
     
 
 
@@ -819,7 +819,7 @@ sns.countplot('grade',data=df, hue='loan_status')
 
 
     
-![png](output_42_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_42_2.png)
     
 
 
@@ -851,7 +851,7 @@ sns.countplot('sub_grade',data=df, order= sorteddf)
 
 
     
-![png](output_45_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_45_2.png)
     
 
 
@@ -880,7 +880,7 @@ sns.countplot('sub_grade',data=df, order= sorteddf,hue='loan_status')
 
 
     
-![png](output_47_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_47_2.png)
     
 
 
@@ -913,7 +913,7 @@ sns.countplot('sub_grade',data=isolate_df,order=sub_order,hue='loan_status')
 
 
     
-![png](output_50_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_50_2.png)
     
 
 
@@ -976,7 +976,7 @@ df.corr()['loan_repaid'].drop('loan_repaid').sort_values().plot(kind='bar')
 
 
     
-![png](output_58_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_58_1.png)
     
 
 
@@ -1405,7 +1405,7 @@ sns.countplot('emp_length',data=df, order=emp)
 
 
     
-![png](output_84_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_84_2.png)
     
 
 
@@ -1442,7 +1442,7 @@ sns.countplot('emp_length',data=df, order=emp, hue="loan_status")
 
 
     
-![png](output_88_2.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_88_2.png)
     
 
 
@@ -1821,7 +1821,7 @@ df_total['loan_status'].plot( kind = 'bar')
 
 
     
-![png](output_93_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_93_1.png)
     
 
 
@@ -4141,7 +4141,7 @@ loss[['loss','val_loss']].plot()
 
 
     
-![png](output_206_1.png)
+![png](loan_prediction_DeepNN_files/loan_prediction_DeepNN_206_1.png)
     
 
 
