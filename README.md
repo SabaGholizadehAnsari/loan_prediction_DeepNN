@@ -1,5 +1,6 @@
-#Loan Payment prediction and Power BI dashboard
- ###ETL processes, DNN modeling for charge off /fully paid classification,
-#PowerBI Dashboard
+# Loan Payment prediction and Power BI dashboard
+ETL processes, DNN modeling for charge off /fully paid classification,
 
-[Dashboard](Loan KPI,KRI PowerBI Dashboard.pdf)
+# PowerBI Dashboard
+
+[Dashboard](Dashboard.pdf)
