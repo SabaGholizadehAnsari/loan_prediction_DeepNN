@@ -1,20 +1,8 @@
-# Keras Exercise Project  
+# Project  
 
-I wrote this project based on tasks assinged in a deeplearning course. 
-This project is about data preprocessing on a Kaggle dataset named "LendingClub" and application of Deep neural network on such data. 
-The project answered by me. ( copyright of questions belongs to: <a href="https://www.pieriandata.com"><img src="../Pierian_Data_Logo.PNG"></a>
-<strong><center>Copyright by Pierian Data Inc.</center></strong> 
-<strong><center>Created by Jose Marcial Portilla.</center></strong>
+This project is about data preprocessing on a Kaggle dataset named "LendingClub" : https://www.kaggle.com/wordsforthewise/lending-club and application of Deep neural network on such data. 
+The project answered by me.
 
-
-
-## The Data
-
-We will be using a subset of the LendingClub DataSet obtained from Kaggle: https://www.kaggle.com/wordsforthewise/lending-club
-
-## NOTE: Do not download the full zip from the link! We provide a special version of this file that has some extra feature engineering for you to do. You won't be able to follow along with the original file!
-
-LendingClub is a US peer-to-peer lending company, headquartered in San Francisco, California.[3] It was the first peer-to-peer lender to register its offerings as securities with the Securities and Exchange Commission (SEC), and to offer loan trading on a secondary market. LendingClub is the world's largest peer-to-peer lending platform.
 
 ### Our Goal
 
