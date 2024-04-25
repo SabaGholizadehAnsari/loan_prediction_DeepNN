@@ -1,8 +1,12 @@
-<a href="https://www.pieriandata.com"><img src="../Pierian_Data_Logo.PNG"></a>
+# Keras Exercise Project  
+
+I wrote this project based on tasks assinged in a deeplearning course. 
+This project is about data preprocessing on a Kaggle dataset named "LendingClub" and application of Deep neural network on such data. 
+The project answered by me. ( copyright of questions belongs to: <a href="https://www.pieriandata.com"><img src="../Pierian_Data_Logo.PNG"></a>
 <strong><center>Copyright by Pierian Data Inc.</center></strong> 
 <strong><center>Created by Jose Marcial Portilla.</center></strong>
 
-# Keras API Project Exercise
+
 
 ## The Data
 
